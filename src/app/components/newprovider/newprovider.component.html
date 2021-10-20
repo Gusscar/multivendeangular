@@ -1,0 +1,149 @@
+<form class="container mt-5" (ngSubmit)="onSubmit(formulario)" #formulario="ngForm">
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Nombre</label>
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" name="name"
+                    [(ngModel)]="provider.name"
+                    placeholder="Importadora Mundial">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <label class="label">R.U.T</label>
+                <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="email" name="taxId" 
+                    [(ngModel)]="provider.taxId"                    
+                    placeholder="1242342-6" value="">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Giro</label>
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" name="activity"
+                    [(ngModel)]="provider.activity"
+                    >
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="email" name="email" placeholder="ejemplo@gmail.com"
+                    [(ngModel)]="provider.email"                    
+                    value="">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Numero de Telefono</label>
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text"
+                     name="phoneNumber" placeholder="+546 123123"
+                    [(ngModel)]="provider.phoneNumber"
+                     
+                     >
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <label class="label">Pais</label>
+                <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="text" name="country" 
+                    [(ngModel)]="provider.country"
+                    
+                    placeholder="Pais" value="">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="label">Direccion</label>
+
+                    <input class="input" type="text" name="direction" placeholder="A.v opportunity">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="label">Zip Code</label>
+
+                    <input class="input" name="code" type="text" placeholder="7775555">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="field is-horizontal">
+
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Descripcion</label>
+
+                <div class="control">
+                    <textarea class="textarea" name="description"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary">
+                        Send message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

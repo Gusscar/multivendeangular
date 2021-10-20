@@ -1,0 +1,31 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://app.multivende.com/">
+      <img src="assets/images/Multivende.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" [routerLink]="['home']">
+        Home
+      </a>
+
+      <a class="navbar-item" [routerLink]="['provider']">
+        Provider
+      </a>
+      <a class="navbar-item" [routerLink]="['stocks']">
+        Stocks
+      </a>
+    
+    </div>
+
+    
+  </div>
+</nav>

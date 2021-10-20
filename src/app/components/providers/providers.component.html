@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th><abbr title="Position">#</abbr></th>
+            <th>Nombre</th>
+            <th><abbr title="Played">Telefono</abbr></th>
+            <th><abbr title="Won">Email</abbr></th>
+            <th><abbr title="Drawn">Acciones</abbr></th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of resp, let i = index">
+            <th>{{i + 1}}</th>
+            <th>{{item.name}}</th>
+            <th>{{item.phoneNumber}}</th>
+            <th>{{item.email}}</th>
+            <th>
+                <button class="button is-primary" (click)="getEdit(item._id)">Editar</button>
+                <button class="button is-danger" (click)="getDeleteProvider(item, i)">Delete</button>
+            </th>
+
+        </tr>
+
+
+
+    </tbody>
+    <button type="button" (click)="getNewProvider()" class="button is-primary">
+        Crear Provider
+    </button>
+</table>
