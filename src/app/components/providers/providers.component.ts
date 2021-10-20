@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ProvidersComponent implements OnInit {
 
-  resp: any[] = []
+  resp: any[] = [];
+  pageActual:number = 1;
 
   provider: ProviderModel[] = []
 

@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
-
-
-
 import {ROUTES} from './app.routers';
 
 import { AppComponent } from './app.component';
@@ -20,6 +17,8 @@ import { NewproviderComponent } from './components/newprovider/newprovider.compo
 import { StocksComponent } from './components/stocks/stocks.component';
 import { StocksproductsComponent } from './components/stocksproducts/stocksproducts.component';
 import { AuthInterceptor } from './interceptor/interceptor';
+
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +37,8 @@ import { AuthInterceptor } from './interceptor/interceptor';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgxPaginationModule
 
   ],
   providers: [

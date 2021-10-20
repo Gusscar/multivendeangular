@@ -83,12 +83,11 @@ export class AuthService {
     this.tokenService.removeToken();
     this.tokenService.removeRefreshToken();
     const codeparam = localStorage.getItem('code')
-    const body = {
-      client_id: 896123781342,
-      client_secret: "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT",
-      grant_type: "authorization_code",
-      code: `${codeparam}`
-    };
+    const body = new HttpParams()
+    .set('client_id',  896123781342)
+    .set('client_secret',  "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT")
+    .set('refresh_token', refreshData.refresh_token)
+    .set('grant_type', 'refresh_token');
     return this.http.post<any>(this.baseUrl, body).pipe(
       map(res => {
         this.tokenService.saveToken(res.access_token);

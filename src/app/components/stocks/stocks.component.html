@@ -5,31 +5,18 @@
     <thead>
         <tr>
             <th><abbr title="Position">#</abbr></th>
-            <th>Nombre</th>
-            
+            <th>Nombre</th>            
             <th><abbr title="Drawn">Acciones</abbr></th>
-
-
         </tr>
     </thead>
-
     <tbody>
         <tr *ngFor="let item of stocks, let i = index">
             <th>{{i + 1}}</th>
-            <th>{{item.name}}</th>
-            
-            <th>
-                <!-- <button class="button is-primary" (click)="getEdit(item._id)">Editar</button>-->
+            <th>{{item.name}}</th>           
+            <th>         
                 <button class="button is-danger" (click)="getStocksProduct(item._id)">Ver</button> 
             </th>
-
         </tr>
-
-
-
     </tbody>
-    <button type="button"  class="button is-primary">
-        Crear Provider
-    </button>
 </table>
 

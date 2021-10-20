@@ -41,19 +41,22 @@ export class EditproviderComponent implements OnInit {
       title: 'Esta seguro?',
       text: `Estas seguro de Editar `,
       icon: 'question',
-      showCancelButton: true,
+      showCancelButton: true, 
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Guardar'
     }).then(resp => {
       if (resp.value) {
         this.authService.EditProviders(form.value, id).subscribe()
         this.route.navigate(['/provider'])
+        
 
       }
     })
+  }
 
-
+  onCancel() {
+    this.route.navigate(['/provider'])
   }
 
 }

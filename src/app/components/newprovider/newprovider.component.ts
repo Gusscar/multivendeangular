@@ -28,4 +28,9 @@ export class NewproviderComponent implements OnInit {
     this.router.navigate(["/provider"])
   }
 
+  onCancel(){
+    this.router.navigate(["/provider"])
+
+  }
+
 }
