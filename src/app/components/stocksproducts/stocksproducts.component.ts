@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StocksService } from 'src/app/services/stocks.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { SpinnersService } from 'src/app/services/spinners.service';
 
 @Component({
   selector: 'app-stocksproducts',
@@ -15,8 +16,8 @@ export class StocksproductsComponent implements OnInit {
   amount: any[] = []
 
   constructor(private stockServices: StocksService,
+    private spinnerServices: SpinnersService,
     private router: ActivatedRoute,
-    private spinner: NgxSpinnerService,
     private route: Router) {
 
     // this.provider= new ProviderModel;
@@ -33,7 +34,8 @@ export class StocksproductsComponent implements OnInit {
   getStocksProducts(id: string) {
     this.stockServices.getBodega(id).subscribe((resp: any) => {
       console.log(resp)
-      this.products = resp})
+      this.products = resp
+    })
   }
 
   onClick() {

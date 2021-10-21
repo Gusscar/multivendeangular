@@ -22,6 +22,7 @@ import { AuthInterceptor } from './interceptor/interceptor';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxSpinnerModule } from "ngx-spinner"; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     RouterModule.forRoot(ROUTES),
     NgxPaginationModule,
-     NgxSpinnerModule
+    NgxSpinnerModule, 
+    BrowserAnimationsModule
 
   ],
   providers: [
@@ -52,6 +54,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  
 })
 export class AppModule { }

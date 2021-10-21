@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ProviderModel } from 'src/app/models/provider.model';
 import Swal from 'sweetalert2';
+import { SpinnersService } from 'src/app/services/spinners.service';
 
 
 
@@ -19,6 +20,7 @@ export class ProvidersComponent implements OnInit {
   provider: ProviderModel[] = []
 
   constructor(private authServices: AuthService,
+    private spinnerServices: SpinnersService,
     private router: Router) {
     this.getProvider()
   }
