@@ -1,14 +1,15 @@
+<div class="mb-5">
+    <h1 class="title is-2" >Stock de Productos</h1>
+</div>
 
-
-
-<table class="table" >
+<table class="table">
     <thead>
         <tr>
             <th><abbr title="Position">#</abbr></th>
-            <th>Nombre</th>
             <th>Producto</th>
             <th>Modelo</th>
-            
+            <th>SKU</th>
+
             <th>Cantidad</th>
 
 
@@ -21,34 +22,30 @@
             <th>{{item.Product['name']}}</th>
             <th>{{item.Product['model']}}</th>
             <th>{{item.code}}</th>
-            
-            
-            <th>
+
+
+            <th *ngFor="let data of item.ProductStocks">
                 <!-- <button class="button is-primary" (click)="getEdit(item._id)">Editar</button>-->
                 <div class="field">
-                     <p class="control is-expanded has-icons-left"> 
-                        <input class="input" type="text" name="amount"
-                        
-                        [value]="item.ProductStocks[0]['amount']"
-                        [(ngModel)]="item.ProductStocks[0]['amount']"
-                        placeholder="amount">
+
+                    <p class="control is-expanded has-icons-left">
+                        <input class="input" type="number" name="amount" value={{data.amount}} [(ngModel)]="data.amount"
+                            placeholder="amount">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </p>
                 </div>
+
             </th>
-           
+
 
         </tr>
 
-       
 
-    </tbody>
-   
+
+
 </table>
 <button type="button" (click)="onClick()" class="button is-primary">
-    Crear Provider
+    Actualizar Stocks
 </button>
-
-

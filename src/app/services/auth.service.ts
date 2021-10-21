@@ -57,8 +57,8 @@ export class AuthService {
 
   consulta() {
     console.log('consulta')
-    // this.tokenService.removeToken();
-    // this.tokenService.removeRefreshToken();
+    this.tokenService.removeToken();
+    this.tokenService.removeRefreshToken();
     const codeparam = localStorage.getItem('code')
     const body = {
       client_id: 896123781342,
@@ -67,16 +67,16 @@ export class AuthService {
       code: `${codeparam}`
     };
     this.http.post<any>(this.baseUrl, body)
-    .subscribe(resp=> 
-          { this.tokenService.saveToken(resp.token);
-          this.tokenService.saveRefreshToken(resp.refreshToken);
-          localStorage.setItem('merchantId', resp.MerchantId)
-          localStorage.setItem('token', resp.token)}
+      .subscribe(resp => {
+        this.tokenService.saveToken(resp.token);
+        this.tokenService.saveRefreshToken(resp.refreshToken);
+        localStorage.setItem('merchantId', resp.MerchantId)
+        localStorage.setItem('token', resp.token)
+      }
       ),
       catchError(AuthService.handleError)
-      
-  }
 
+  }
 
 
   refreshToken(refreshData: any) {
@@ -84,19 +84,19 @@ export class AuthService {
     this.tokenService.removeRefreshToken();
     const codeparam = localStorage.getItem('code')
     const body = new HttpParams()
-    .set('client_id',  896123781342)
-    .set('client_secret',  "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT")
-    .set('refresh_token', refreshData.refresh_token)
-    .set('grant_type', 'refresh_token');
+      .set('client_id', 896123781342)
+      .set('client_secret', "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT")
+      .set('refresh_token', refreshData.refresh_token)
+      .set('grant_type', 'refresh_token');
     return this.http.post<any>(this.baseUrl, body).pipe(
       map(res => {
-        this.tokenService.saveToken(res.access_token);
+        this.tokenService.saveToken(res.token);
         this.tokenService.saveRefreshToken(res.refresh_token);
       }),
       catchError(AuthService.handleError))
   }
 
-
+  
   getQuery(query: string) {
     const token = localStorage.getItem('token')
 
@@ -108,13 +108,14 @@ export class AuthService {
     return this.http.get(url, { headers })
   }
 
+  //consultar los providers
   getProviders() {
     const merchantId = localStorage.getItem('merchantId')
     return this.getQuery(`api/m/${merchantId}/providers/p/1`)
       .pipe(map((data: any) => data.entries));
   }
 
-
+  //crear un nuevo provider
   newProviders(form: any) {
     const merchantId = localStorage.getItem('merchantId')
     const token = localStorage.getItem('token')
@@ -142,6 +143,7 @@ export class AuthService {
 
   }
 
+  //Editar un provaider existente
   EditProviders(form: any, id: string) {
     const merchantId = localStorage.getItem('merchantId')
     const token = localStorage.getItem('token')
@@ -168,12 +170,13 @@ export class AuthService {
 
   }
 
+  //obtener un provider por el ID
   getProviderId(id: string) {
     const merchantId = localStorage.getItem('merchantId')
     return this.getQuery(`api/providers/${id}`)
-    // .pipe(map((data: any) => console.log(data)));
   }
 
+  //borrar un provider
   getDeleteProvider(id: string) {
     const token = localStorage.getItem('token')
     const url = `https://app.multivende.com/api/providers/${id}`
@@ -181,8 +184,6 @@ export class AuthService {
       Authorization: `Bearer ${token}`
     });
     return this.http.delete<any>(url, { headers })
-
-
   }
 
 
