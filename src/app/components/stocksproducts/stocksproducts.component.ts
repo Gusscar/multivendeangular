@@ -12,22 +12,24 @@ import { SpinnersService } from 'src/app/services/spinners.service';
 })
 export class StocksproductsComponent implements OnInit {
 
-  products: any[] = []
-  amount: any[] = []
+  products: any[] = [];
+  amounts: any[]=[];
+  warehouseId:string=''
+  
 
   constructor(private stockServices: StocksService,
     private spinnerServices: SpinnersService,
-    private router: ActivatedRoute,
+    private router: ActivatedRoute, 
     private route: Router) {
 
     // this.provider= new ProviderModel;
     this.router.params.subscribe(params => {
       this.getStocksProducts(params['id'])
-
+      this.warehouseId = params['id']
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
   }
 
@@ -38,10 +40,28 @@ export class StocksproductsComponent implements OnInit {
     })
   }
 
-  onClick() {
 
 
+  setAmount(value:any, sku:number){
+    
+    this.amounts = this.amounts.filter(x=> x.code !== sku)
+    
+    this.amounts = [
+      ...this.amounts,
+      {
+        code: sku,
+        amount: value.target.value
+      }
+    ]
+    
   }
+  
+  getUpdateStocks(){
 
+    
+  this.stockServices.getUpdateStocks(this.amounts, this.warehouseId)
+
+  
+  }
 
 }

@@ -82,14 +82,21 @@ export class AuthService {
   refreshToken(refreshData: any) {
     this.tokenService.removeToken();
     this.tokenService.removeRefreshToken();
-    const codeparam = localStorage.getItem('code')
-    const body = new HttpParams()
-      .set('client_id', 896123781342)
-      .set('client_secret', "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT")
-      .set('refresh_token', refreshData.refresh_token)
-      .set('grant_type', 'refresh_token');
+    
+    const body =  {
+      client_id: 896123781342,
+      client_secret: "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT",
+      refresh_token: refreshData.refresh_token,
+      grant_type: 'refresh_token'
+    };
+    // new HttpParams()
+    //   .set('client_id', 896123781342)
+    //   .set('client_secret', "MjA5tPEuOkYS600yeJdDNCteBS5uKsHxdugztcXiWiOKqYmlYT")
+    //   .set('refresh_token', refreshData.refresh_token)
+    //   .set('grant_type', 'refresh_token');
     return this.http.post<any>(this.baseUrl, body).pipe(
-      map(res => {
+      tap(res => {
+        console.log('refresh', res)
         this.tokenService.saveToken(res.token);
         this.tokenService.saveRefreshToken(res.refresh_token);
       }),

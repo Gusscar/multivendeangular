@@ -12,7 +12,7 @@ export class StocksService {
 
   getQuery(query: string) {
     const token = localStorage.getItem('token')
-       
+
     const url = `https://app.multivende.com/${query}`
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
@@ -21,16 +21,32 @@ export class StocksService {
     return this.http.get(url, { headers })
   }
 
-  getStock(){
+  getStock() {
     const merchantId = localStorage.getItem('merchantId')
     return this.getQuery(`api/m/${merchantId}/stores-and-warehouses/p/1`)
       .pipe(map((data: any) => data.entries));
   }
 
-  getBodega(id:string){
+  getBodega(id: string) {
     const merchantId = localStorage.getItem('merchantId')
     return this.getQuery(`api/m/${merchantId}/product-versions/p/1?_include_stock=true&_warehouse_id=${id}`)
       .pipe(map((data: any) => data.entries));
+  }
+
+
+  getUpdateStocks(stock: any, warehouseId: string) {
+    
+    const token = localStorage.getItem('token')    
+    const url = `https://app.multivende.com/api/product-stocks/stores-and-warehouses/${warehouseId}/bulk-set`
+
+    const body =    stock;    
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    this.http.post<any>(url, body, { headers }).subscribe(data => {
+      console.log('data',data);
+    });
+
   }
 
 }

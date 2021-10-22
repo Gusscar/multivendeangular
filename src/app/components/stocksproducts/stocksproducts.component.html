@@ -24,12 +24,15 @@
             <th>{{item.code}}</th>
 
 
-            <th *ngFor="let data of item.ProductStocks">
+            <th >
                 <!-- <button class="button is-primary" (click)="getEdit(item._id)">Editar</button>-->
                 <div class="field">
 
                     <p class="control is-expanded has-icons-left">
-                        <input class="input" type="number" name="amount" value={{data.amount}} [(ngModel)]="data.amount"
+                        <input 
+                        style="width: 200px;"
+                        class="input" type="number" name="amount" [value]="item.ProductStocks.length ? item.ProductStocks[0]['amount'] : 0" 
+                        (change)="setAmount($event, item.code)"
                             placeholder="amount">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
@@ -47,6 +50,6 @@
 
 </table>
 <ngx-spinner></ngx-spinner>
-<button type="button" (click)="onClick()" class="button is-primary">
+<button type="button" (click)="getUpdateStocks()"  class="button is-primary">
     Actualizar Stocks
 </button>

@@ -15,12 +15,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.authService.getLogin()) 
   }
 
-  onNavigate(){    
-    window.location.href="https://app.multivende.com/apps/authorize?response_type=code&client_id=896123781342&redurect_uir=http://localhost:3000/configuration&scope=read:checkouts"; }
+}
 
   
-
-}

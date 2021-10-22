@@ -14,18 +14,28 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" [routerLink]="['home']">
-        Home
+        <strong> Home</strong> 
       </a>
 
       <a class="navbar-item" [routerLink]="['provider']">
-        Provider
+       <strong>Provider</strong> 
       </a>
       <a class="navbar-item" [routerLink]="['stocks']">
-        Stocks
+        <strong> Stocks</strong> 
       </a>
-    
+
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a (click)="login()" class="button is-primary">
+            <strong>Login</strong>
+          </a>
+          
+        </div>
+      </div>
     </div>
 
-    
+
   </div>
 </nav>
